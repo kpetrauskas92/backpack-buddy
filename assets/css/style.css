@@ -78,6 +78,7 @@
   }
 
   /* Accordion styling */
+
   .accordion {
     max-width: 800px;
     margin: 0 auto;
@@ -128,3 +129,74 @@
   .active {
     max-height: 500px;
   }
+  
+  /* Modal styles */
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(218, 218, 218);
+}
+
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e7dfdf;
+  margin: 10% auto;
+  padding: 1rem;
+  border-radius: 4px;
+  max-width: 500px;
+}
+
+#modal-content h2 {
+  text-transform: uppercase;
+}
+
+
+.close-button {
+  align-self: flex-end;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #f72e2e;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+#backpack-list {
+  list-style: none;
+  font-size: large;
+  margin: 0;
+  padding: 0;
+}
+
+#backpack-list li {
+  margin-bottom: 0.5rem;
+}
+.extra-item label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.extra-item input {
+  height: 30px;
+  width: 100px;
+}
+
+#clear-button {
+  margin-top: 1rem;
+}
+
+#clear-button:hover {
+  background-color: #f44336;
+}
