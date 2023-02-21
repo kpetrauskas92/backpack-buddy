@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Nunito&display=swap');
+
 /* Global styles */
 * {
     box-sizing: border-box;
@@ -17,19 +19,26 @@
     position: sticky;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #333;
+    /* background-color: #333; */
     color: #fff;
+  }
+
+  .logo {
+    max-width: 60%;
+    padding: 1rem 1rem;
   }
   
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: #000;
   }
 
   img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     margin-bottom: 1rem;
   }
@@ -43,15 +52,17 @@
 
   button {
     padding: 0.5rem 1rem;
-    background-color: #4caf50;
-    color: #fff;
+    background-color: #94c566;
+    font-size: large;
+    text-transform: uppercase;
+    color: #000000;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #3e8e41;
+    background-color: #AE7878;
   }
 
   /* icon container styling */
@@ -88,6 +99,7 @@
     width: 90%;
     padding: 0.8rem;
     font-size: 1.2rem;
+    font-family: 'Caveat', cursive;
     font-weight: bold;
     border: none;
     border-bottom: 1px solid #ccc;
@@ -98,7 +110,7 @@
   }
   
   .accordion-button:hover {
-    background-color: #4DA167;
+    background-color: #AE7878;
   }
   
   .accordion-content {
@@ -173,6 +185,11 @@
   color: #000;
 }
 
+#item-count{
+  color: #f44336;
+  font-weight: bold;
+}
+
 #backpack-list {
   list-style: none;
   font-size: large;
@@ -183,6 +200,13 @@
 #backpack-list li {
   margin-bottom: 0.5rem;
 }
+
+#backpack-list h5 {
+  font-family: 'Caveat', cursive;
+  color: #3e8e41;
+  font-size: x-large;
+}
+
 .extra-item label{
   display: flex;
   flex-direction: column;

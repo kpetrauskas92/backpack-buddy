@@ -90,6 +90,7 @@ let clearBackpack = function() {
     backpackList.innerHTML = "";
     backpackIcon.innerText = "0";
     itemCount.innerText = "0";
+    categoriesAdded = {};
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
   }
@@ -99,16 +100,24 @@ clearBtn.onclick = clearBackpack;
 
 // list updates in backpack when checked
 
+let categoriesAdded = {};
+
 for (let i = 0; i < checkboxes.length; i++) {
   checkboxes[i].addEventListener('change', function() {
     let accordionButton = this.closest('.accordion').querySelector('.accordion-button').innerText;
     
     if (this.checked) { 
       let li = document.createElement("li");
-      let h5 = document.createElement("h5");
-      h5.innerText = accordionButton;
+      let h5;
+      
+      if (!categoriesAdded[accordionButton]) {
+        h5 = document.createElement("h5");
+        h5.innerText = accordionButton;
+        backpackList.appendChild(h5);
+        categoriesAdded[accordionButton] = true;
+      }
+      
       li.innerText = this.value;
-      backpackList.appendChild(h5);
       backpackList.appendChild(li);
       backpackIcon.innerText = parseInt(backpackIcon.innerText) + 1;
       itemCount.innerText = parseInt(itemCount.innerText) + 1;
@@ -121,6 +130,11 @@ for (let i = 0; i < checkboxes.length; i++) {
           backpackList.removeChild(items[j]);
           backpackIcon.innerText = parseInt(backpackIcon.innerText) - 1;
           itemCount.innerText = parseInt(itemCount.innerText) - 1;
+          
+          if (items.length === 1 && items[0].previousSibling.innerText === accordionButton) {
+            backpackList.removeChild(items[0].previousSibling);
+            delete categoriesAdded[accordionButton];
+          }
           break;
         }
       }
