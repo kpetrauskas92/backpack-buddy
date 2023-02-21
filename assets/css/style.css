@@ -86,7 +86,7 @@
   
   .accordion-button {
     width: 90%;
-    padding: 1rem;
+    padding: 0.8rem;
     font-size: 1.2rem;
     font-weight: bold;
     border: none;
@@ -102,8 +102,9 @@
   }
   
   .accordion-content {
-    margin: 1rem;
-    padding-left: 0.7rem;
+    margin-top: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     text-align:left;
     max-height: 0;
     overflow: hidden;
