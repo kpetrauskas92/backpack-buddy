@@ -152,7 +152,25 @@
                 </ul>
           </div>
     </main>
-    <footer></footer>
-    <script>script.js</script>
+    <div id="backpack-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>My Backpack</h2>
+        <p>Total Items: <span id="item-count">0</span></p>
+        <ul id="backpack-list">
+          <!-- The list of backpack items will be added using JavaScript -->
+        </ul>
+        <div class="extra-item">
+          <label for="extra-item-input">Add extra item:</label>
+          <input type="text" id="extra-item-input">
+          <button id="add-extra-item-button">Add</button>
+        </div>
+        <button id="clear-button">Clear Backpack</button>
+      </div>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="/assets/js/script.js"></script>
   </body>
 </html>
