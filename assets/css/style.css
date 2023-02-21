@@ -200,3 +200,56 @@
 #clear-button:hover {
   background-color: #f44336;
 }
+
+/* signup-form styling */
+
+#sign-up__form___container {
+  max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 1rem;
+}
+
+#sign-up__form___container h4 {
+  padding: 1rem;
+}
+
+#sign-up__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  margin: auto;
+  padding: 1rem;
+  border: #555555;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+#sign-up__form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+#sign-up__form input[type="text"],
+#sign-up__form input[type="email"] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+}
+
+#sign-up__form input[type="submit"] {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#sign-up__form input[type="submit"]:hover {
+  background-color: #0062cc;
+}
