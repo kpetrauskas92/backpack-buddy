@@ -80,6 +80,11 @@
     margin: 0 auto;
   }
 
+  .intro-text h3 {
+    color: #59CFFA;
+    text-shadow: 0.3px 0.3px black;
+  }
+
   /* icon container styling */
   
    .backpack-icon-container {
