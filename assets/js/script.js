@@ -71,7 +71,6 @@ let checkboxes = document.querySelectorAll('.item-checkbox');
 let backpackIcon = document.getElementById("backpack-icon");
 let itemCount = document.getElementById("item-count");
 let backpackImg = document.getElementById("backpack-image");
-let saveToPdfButton = document.getElementById('save-to-pdf');
 
 backpackImg.addEventListener('click', function() {
   
@@ -86,13 +85,13 @@ modalBtn.onclick = function() {
 
 closeBtn.onclick = function() {
   modal.style.display = "none";
-}
+};
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
 let clearBackpack = function() {
   if (confirm("Are you sure you want to clear your Backpack ?")) {
@@ -104,7 +103,7 @@ let clearBackpack = function() {
       checkboxes[i].checked = false;
     }
   }
-}
+};
 
 clearBtn.onclick = clearBackpack;
 
@@ -112,8 +111,8 @@ clearBtn.onclick = clearBackpack;
 
 let categoriesAdded = {};
 
-for (let i = 0; i < checkboxes.length; i++) {
-  checkboxes[i].addEventListener('change', function() {
+function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount) {
+  return function() {
     let accordionButton = this.closest('.accordion').querySelector('.accordion-button').innerText;
     
     if (this.checked) { 
@@ -155,35 +154,38 @@ for (let i = 0; i < checkboxes.length; i++) {
           break;
         }
       }
-
     }
-  });
+  };
+}
+
+for (let i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener('change', createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount));
 }
 
 // print button element
 
-// Get a reference to the print button element
 let printBtn = document.getElementById("print-button");
 
-// Add an event listener to the print button
 printBtn.addEventListener("click", function() {
-
-  // Create a new window using the window.open() method
   let printWindow = window.open("", "printWindow");
 
-  // Write the contents of the modal to the document using document.write()
-  printWindow.document.write("<html><head><title>Print Modal</title>");
-  printWindow.document.write("<link rel='stylesheet' href='path/to/modal.css'>");
-  printWindow.document.write("</head><body>");
-  printWindow.document.write(document.getElementById("backpack-modal").innerHTML);
-  printWindow.document.write("</body></html>");
+  let printDocument = printWindow.document.open();
+  printDocument.write("<html><head><title>Print Modal</title>");
+  printDocument.write("<link rel='stylesheet' href='path/to/modal.css'>");
+  printDocument.write("</head><body>");
 
-  // Print the contents of the new window using the window.print() method
+  let modalContent = document.createElement("div");
+  modalContent.innerHTML = document.getElementById("backpack-modal").innerHTML;
+
+  printDocument.documentElement.appendChild(modalContent);
+
+  printDocument.close();
+
   printWindow.print();
 
-  // Close the new window
-  printWindow.close();
-
+  setTimeout(function() {
+    printWindow.close();
+  }, 1000);
 });
 
 // add extra button function 
