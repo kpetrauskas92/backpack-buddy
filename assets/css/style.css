@@ -231,11 +231,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #59CFFA;
+  font-weight: bold;
 }
 
 .extra-item input {
-  height: 30px;
-  width: 100px;
+  height: 35px;
+  width: 120px;
 }
 
 #clear-button {
