@@ -184,7 +184,7 @@ Please refer to [**_here_**](TESTING.md) for more information on testing.
 3. Under **Source**, select the branch to **master**, then click **save**.
 4. Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-![Deployment](assets/docs/deploy.png) 
+![Deployment](assets/images/readme/deploy.png) 
 
 The live link can be found here - https://kpetrauskas92.github.io/backpack-buddy
 
@@ -195,6 +195,8 @@ The live link can be found here - https://kpetrauskas92.github.io/backpack-buddy
 - A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. Take the following steps to fork the repository;
 1. Log in to **GitHub** and locate the [repository](https://github.com/kpetrauskas92/backpack-buddy).
 2. On the right hand side of the page inline with the repository name is a button called **'Fork'**, click on the button to create a copy of the original repository in your GitHub Account.
+
+![Fork](assets/images/readme/fork.png) 
 
 [Back to top](<#contents>)
 
@@ -207,6 +209,8 @@ The live link can be found here - https://kpetrauskas92.github.io/backpack-buddy
 4. Change the current working directory to the location where you want the cloned directory to be made.
 5. Type **git clone**, and then paste the URL copied from GitHub.
 6. Press **enter** and the local clone will be created.
+
+![Clone](assets/images/readme/clone.png) 
 
 [Back to top](<#contents>)
 

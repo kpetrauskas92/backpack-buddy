@@ -362,3 +362,18 @@ i.fa-check {
   color: #94c566;
   font-size: large;
 }
+
+.useful-links {
+  padding: 1.5rem;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.useful-links li{
+  list-style: none;
+  padding-bottom: 0.3rem;
+}
+
+.useful-links li a {
+  font-weight: bold;
+}
