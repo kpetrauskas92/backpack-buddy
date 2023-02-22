@@ -16,18 +16,18 @@
   }
   
   header {
-    position: sticky;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    /* background-color: #333; */
+    padding: 0.2rem;
+
     color: #fff;
   }
 
   .logo {
-    max-width: 60%;
+    max-width: 90%;
+    margin: 0 auto;
     padding: 1rem 1rem;
   }
   
@@ -37,11 +37,17 @@
     color: #000;
   }
 
-  img {
-    width: 100%;
+  .main-img img{
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1rem 1rem;
+  }
+
+  /* img {
+    width: 50%;
     height: auto;
     margin-bottom: 1rem;
-  }
+  } */
   
   p {
     margin-bottom: 1rem;
@@ -52,8 +58,11 @@
 
   button {
     padding: 0.5rem 1rem;
+    margin-bottom: 10px;
     background-color: #94c566;
-    font-size: large;
+    font-size: 1.2rem;
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
     text-transform: uppercase;
     color: #000000;
     border: none;
@@ -62,12 +71,16 @@
   }
   
   button:hover {
-    background-color: #AE7878;
+    background-color: #664646;
+  }
+
+  .intro-text {
+    padding: 0.5rem 1rem;
   }
 
   /* icon container styling */
   
-  .backpack-icon-container {
+   .backpack-icon-container {
     position: relative;
     display: inline-block;
   }
@@ -79,7 +92,7 @@
     display: block;
     width: 25px;
     height: 25px;
-    background-color: red;
+    background-color: #f44336;
     border-radius: 50%;
     text-align: center;
     line-height: 25px;
@@ -106,7 +119,7 @@
     text-align: left;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 1s ease;
   }
   
   .accordion-button:hover {
@@ -120,7 +133,7 @@
     text-align:left;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 1s ease;
   }
   
   .accordion-content ul {
@@ -147,7 +160,7 @@
 
 .modal {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
@@ -177,7 +190,7 @@
   align-self: flex-end;
   font-size: 2.2rem;
   font-weight: bold;
-  color: #f72e2e;
+  color: #f44336;
   cursor: pointer;
 }
 
@@ -244,7 +257,7 @@
   max-width: 90%;
   margin: auto;
   padding: 1rem;
-  border: #555555;
+  border: #664646;
   border-style: solid;
   border-width: 1px;
   border-radius: 4px;
@@ -269,14 +282,16 @@
   padding: 0.5rem;
   border-radius: 4px;
   border: none;
-  background-color: #4caf50;
-  color: #fff;
-  font-size: 1rem;
+  background-color: #94c566;
+  font-family: 'Caveat', cursive;
+  color: black;
+  font-weight: bold;
+  font-size: 1.3rem;
   cursor: pointer;
 }
 
 #sign-up__form input[type="submit"]:hover {
-  background-color: #0062cc;
+  background-color: #664646;
 }
 
 
@@ -291,11 +306,11 @@
   width: 100%;
   height: 100%;
   backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.5); /* Add a dark overlay */
+  background-color: rgba(59, 38, 24, 0.493); 
 }
 
 .alert-modal__content {
-  margin: 10% auto; /* Center the modal content vertically */
+  margin: 10% auto; 
   padding: 20px;
   border: #000;
   border-width: 2px;
@@ -308,7 +323,7 @@
 }
 
 .alert-modal__content h2 {
-background-color: rgba(8, 134, 19, 0.473);
+background-color: rgba(148, 197, 102, 1);
 border-radius: 5px;
 padding: 1rem;
 }
@@ -326,4 +341,29 @@ padding: 1rem;
 
 .alert-close:hover {
   color: black;
+}
+
+
+/* WIP */
+
+
+a {
+  color: #664646;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #94c566;
+}
+
+#backpack-image {
+  cursor: pointer;
+  filter: grayscale(100%);
+  opacity: 0.9;
+  transition: filter 0.5s ease, opacity 0.5s ease;
+}
+
+#backpack-image:hover {
+  filter: none;
+  opacity: 1;
 }

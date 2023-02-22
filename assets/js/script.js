@@ -55,7 +55,7 @@ function handleFormSubmit(event) {
 
   let nameInput = form.querySelector('input[name="name"]');
   let name = nameInput.value;
-  showAlert(`Thank you for subscribing to Backpack Buddy, ${name}!`);
+  showAlert(`Thank you ${name}, for subscribing to Backpack Buddy!`);
 }
 
 form.addEventListener('submit', handleFormSubmit);
@@ -69,11 +69,19 @@ let backpackList = document.getElementById("backpack-list");
 let clearBtn = document.getElementById("clear-button");
 let checkboxes = document.querySelectorAll('.item-checkbox');
 let backpackIcon = document.getElementById("backpack-icon");
-let itemCount = document.getElementById("item-count")
+let itemCount = document.getElementById("item-count");
+let backpackImg = document.getElementById("backpack-image");
+
+backpackImg.addEventListener('click', function() {
+  
+  modal.style.display = "block";
+});
 
 modalBtn.onclick = function() {
+  
   modal.style.display = "block";
-}
+  
+};
 
 closeBtn.onclick = function() {
   modal.style.display = "none";
@@ -93,8 +101,9 @@ let clearBackpack = function() {
     categoriesAdded = {};
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
+    }
   }
-  }}
+}
 
 clearBtn.onclick = clearBackpack;
 

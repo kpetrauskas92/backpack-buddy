@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BPack Buddy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="keywords" content="Backpacking, Hiking, Adventure, Outdoors, Trekking, Camping, Trails, Gear">
+    <meta name="description" content="Never forget your hiking essentials again with Backpack Buddy! Get started today!">
+    <title>Backpack Buddy</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
@@ -11,19 +17,27 @@
     <!-- header -->
 
     <header>
-      <img class="logo" src="assets/images/logo.jpg" alt="logo"/>
+      <div id="logo">
+        <a href="index.html" rel="nofollow"><img class="logo" src="assets/images/logo.jpg" alt="logo"></a>
+
+      </div>
     </header>
 
     <!-- accordion tabs for categories -->
 
     <main>
-      <img src="/assets/images/backpack.png" alt="backpack" />
+      <div class="main-img">
+        <img id="backpack-image" src="/assets/images/backpack.png" alt="backpack" />     
+      </div>
       <div class="backpack-icon-container">
         <span id="backpack-icon">0</span>
         <button id="backpack-button">My Backpack</button>
       </div>
 
-        <p>Heading out for a day hike is a delightful way to explore nature with friends and family, or even by yourself. Whether you want to go deep into the mountains or stay closer to home, the places to go are numerous; many state and national parks offer broad networks for trails, as does national forest land. To determine what you need to bring on a day hike, think about how far you plan to hike, how remote the location is and what the weather forecast has in store. In general, the longer and/or more remote the hike is and the more inclement the weather, the more clothing, gear, food and water you’re going to want.</p>
+      <div class="intro-text">
+        <p>Welcome to Backpack Buddy! If you're an avid hiker who often forgets what to pack before heading out on an adventure, you've come to the right place. Our website offers a simple solution to ensure that you never leave anything behind again. With Backpack Buddy, you can easily select the category of items you need for your trip and quickly check them off as you pack them into your backpack. Whether you're a beginner or a seasoned hiker, Backpack Buddy is here to make your packing process more efficient and stress-free. So, get started today and enjoy a worry-free adventure knowing that Backpack Buddy has your back!
+        </p>
+      </div>
 
         <div class="accordion">
           <button class="accordion-button">Hiking Gear</button>
@@ -170,6 +184,7 @@
         </div>
         <button id="clear-button">Clear Backpack</button>
       </div>
+      <p>Heading out for a day hike is a delightful way to explore nature with friends and family, or even by yourself. Whether you want to go deep into the mountains or stay closer to home, the places to go are numerous; many state and national parks offer broad networks for trails, as does national forest land. To determine what you need to bring on a day hike, think about how far you plan to hike, how remote the location is and what the weather forecast has in store. In general, the longer and/or more remote the hike is and the more inclement the weather, the more clothing, gear, food and water you’re going to want.</p>
     </div>
 
 <!-- sign up form -->
@@ -200,7 +215,8 @@
 
     <footer>
       <p>Disclaimer: This website was created as part of a project for Code Institute</p>
-      <p>Copyright © 2023 Backpack Buddy</p>
+      <hr class="solid">
+      <p>Copyright © 2023 <a href="index.html" rel="nofollow">Backpack Buddy</a></p>
     </footer>
 
 <!-- script section -->
