@@ -75,7 +75,9 @@
   }
 
   .intro-text {
+    max-width: 800px;
     padding: 0.5rem 1rem;
+    margin: 0 auto;
   }
 
   /* icon container styling */
@@ -354,18 +356,6 @@ a {
 
 a:hover {
   color: #94c566;
-}
-
-#backpack-image {
-  cursor: pointer;
-  filter: grayscale(100%);
-  opacity: 0.9;
-  transition: filter 0.5s ease, opacity 0.5s ease;
-}
-
-#backpack-image:hover {
-  filter: none;
-  opacity: 1;
 }
 
 i.fa-check {

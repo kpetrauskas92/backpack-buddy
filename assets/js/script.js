@@ -162,21 +162,26 @@ for (let i = 0; i < checkboxes.length; i++) {
 
 // print button element
 
+// Get a reference to the print button element
 let printBtn = document.getElementById("print-button");
 
+// Add an event listener to the print button
 printBtn.addEventListener("click", function() {
 
+  // Create a new window using the window.open() method
   let printWindow = window.open("", "printWindow");
 
-  printWindow.document.write("<html><head><title>Backpack Buddy</title>");
+  // Write the contents of the modal to the document using document.write()
+  printWindow.document.write("<html><head><title>Print Modal</title>");
   printWindow.document.write("<link rel='stylesheet' href='path/to/modal.css'>");
   printWindow.document.write("</head><body>");
   printWindow.document.write(document.getElementById("backpack-modal").innerHTML);
   printWindow.document.write("</body></html>");
 
-document.head.appendChild(style);
-
+  // Print the contents of the new window using the window.print() method
   printWindow.print();
+
+  // Close the new window
   printWindow.close();
 
 });
