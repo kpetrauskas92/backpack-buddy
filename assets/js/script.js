@@ -71,6 +71,7 @@ let checkboxes = document.querySelectorAll('.item-checkbox');
 let backpackIcon = document.getElementById("backpack-icon");
 let itemCount = document.getElementById("item-count");
 let backpackImg = document.getElementById("backpack-image");
+let saveToPdfButton = document.getElementById('save-to-pdf');
 
 backpackImg.addEventListener('click', function() {
   
@@ -126,10 +127,17 @@ for (let i = 0; i < checkboxes.length; i++) {
         categoriesAdded[accordionButton] = true;
       }
       
-      li.innerText = this.value;
+      li.innerText = " " + this.value;
+      
+      // add a Font Awesome checkmark icon to the li element
+      let icon = document.createElement('i');
+      icon.classList.add('fas', 'fa-check');
+      li.insertBefore(icon, li.firstChild);
+      
       backpackList.appendChild(li);
       backpackIcon.innerText = parseInt(backpackIcon.innerText) + 1;
       itemCount.innerText = parseInt(itemCount.innerText) + 1;
+
     }
     else {
       let items = backpackList.getElementsByTagName("li");
@@ -147,9 +155,31 @@ for (let i = 0; i < checkboxes.length; i++) {
           break;
         }
       }
+
     }
   });
 }
+
+// print button element
+
+let printBtn = document.getElementById("print-button");
+
+printBtn.addEventListener("click", function() {
+
+  let printWindow = window.open("", "printWindow");
+
+  printWindow.document.write("<html><head><title>Backpack Buddy</title>");
+  printWindow.document.write("<link rel='stylesheet' href='path/to/modal.css'>");
+  printWindow.document.write("</head><body>");
+  printWindow.document.write(document.getElementById("backpack-modal").innerHTML);
+  printWindow.document.write("</body></html>");
+
+document.head.appendChild(style);
+
+  printWindow.print();
+  printWindow.close();
+
+});
 
 // add extra button function 
 
@@ -160,9 +190,10 @@ addExtraItemButton.addEventListener("click", function() {
   let extraItem = extraItemInput.value;
   if (extraItem.trim() !== "") {
     let li = document.createElement("li");
-    li.innerText = extraItem;
+    li.innerText = "Extra: " + extraItem;
     backpackList.appendChild(li);
     extraItemInput.value = "";
+    backpackIcon.innerText = parseInt(backpackIcon.innerText) + 1;
     itemCount.innerText = parseInt(itemCount.innerText) + 1;
   }
 });

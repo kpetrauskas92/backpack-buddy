@@ -367,3 +367,8 @@ a:hover {
   filter: none;
   opacity: 1;
 }
+
+i.fa-check {
+  color: #94c566;
+  font-size: large;
+}
