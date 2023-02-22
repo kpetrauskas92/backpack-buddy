@@ -129,6 +129,7 @@ function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIco
       li.innerText = " " + this.value;
       
       // add a Font Awesome checkmark icon to the li element
+      
       let icon = document.createElement('i');
       icon.classList.add('fas', 'fa-check');
       li.insertBefore(icon, li.firstChild);
@@ -170,8 +171,7 @@ printBtn.addEventListener("click", function() {
   let printWindow = window.open("", "printWindow");
 
   let printDocument = printWindow.document.open();
-  printDocument.write("<html><head><title>Print Modal</title>");
-  printDocument.write("<link rel='stylesheet' href='path/to/modal.css'>");
+  printDocument.write("<html><head><title>Print List</title>");
   printDocument.write("</head><body>");
 
   let modalContent = document.createElement("div");
@@ -182,6 +182,8 @@ printBtn.addEventListener("click", function() {
   printDocument.close();
 
   printWindow.print();
+
+  // Add a delay before closing the print window, to work with smartphones.
 
   setTimeout(function() {
     printWindow.close();
