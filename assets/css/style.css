@@ -81,7 +81,7 @@
   }
 
   .intro-text h3 {
-    color: #59CFFA;
+    color: #664646;
     text-shadow: 0.3px 0.3px black;
   }
 
@@ -231,7 +231,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #59CFFA;
+  color:#664646;
   font-weight: bold;
 }
 

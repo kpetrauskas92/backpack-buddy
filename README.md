@@ -222,23 +222,22 @@ The live link can be found here - https://kpetrauskas92.github.io/backpack-buddy
 * [TinyPNG](https://tinypng.com/). Used to compress images.
 * [Colormind](http://colormind.io/) Used to generate color pallete.
 * [StackOverflow](https://stackoverflow.com/) Alot of help found here.
-* [Reame.md] Resused my 1st projects.
+* Reame.md Resused template from my 1st project.
 
 [Back to top](<#contents>)
 
 ### Media
-* Hero banner image used, and licence obtained from [Alamy](https://www.alamy.com/portrait-of-alex-honnold-the-strongest-free-solo-climbers-image342625769.html).
-* All other images from [Pexels](https://www.pexels.com/).
+* Main image used from [Flaticon](https://www.flaticon.com/).
 
 [Back to top](<#contents>)
 
 # Acknowledgements
-The website was developed and designed as a Portfolio 2 Project for Full Stack Software Developer Diploma course at the [Code Institute](https://codeinstitute.net/).
+The website was developed and designed as a Portfolio 2 Project for Full Stack Software Developer Diploma course at the [Code Institute](https://codeinstitute.net/). I want to give a big shoutout to my family for putting up with my coding-induced disappearances. You guys are the real MVPs for not sending out a search party every time I go down the rabbit hole of programming.
 
 # Personal Note
+I've often envisioned an app for hikers that goes beyond a simple to-do list. My idea is for an app that allows users to check the weather forecast a day in advance and provides all the features a hiker might need to prepare for any adventure. I'm considering building upon this website in the future and turning it into a native app for smartphones. I'm hoping that the upcoming modules in the Code Institute will equip me with the necessary tools to achieve this goal.
 
 
-
-Karolis Petrauskas 2023.
+  ### Karolis Petrauskas 2023.
 
 [Back to top](<#contents>)

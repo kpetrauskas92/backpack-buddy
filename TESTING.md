@@ -6,20 +6,20 @@ The HTML validator results for each page are below:
 
 * Home page
 
-![W3C Validator test result](assets/docs/testing/home-validation.png)
+![W3C Validator test result](assets/images/testing/index-html.png)
 
 * 404 page
 
-![W3C Validator test result](assets/docs/testing/gallery-validation.png)
+![W3C Validator test result](assets/images/testing/404-html.png)
 
 
 The CSS validator results are below:
 
-![CSS Validator test result](assets/docs/testing/css-validation.png)
+![CSS Validator test result](assets/images/testing/css-validation.png)
 
 The jsHint validator results are below:
 
-![jsHint Validator test result](assets/docs/testing/css-validation.png)
+![jsHint Validator test result](assets/images/testing/jsHint.png)
 
 ## Responsiveness Test
 
@@ -31,7 +31,7 @@ The jsHint validator results are below:
 | Images | pass    | pass      | pass     | pass | pass     | pass            | pass            |
 | Links  | pass    | pass      | pass     | pass | pass     | pass            | pass            |
 
-Note: On wide display types the contents of the site are restricted in width to 1440px. This helps the UX by not spreading the content too wide on the extra wide screens.
+Note: On wide display types the contents of the site are restricted in width to 800px. This helps the UX by not spreading the content too wide and making the overal look as an application.
 
 ## Browser Compatibility
 
@@ -41,20 +41,15 @@ Google Chrome, Microsoft Edge, Safari and Mozilla Firefox. Appearance, functiona
 ## Known Bugs
 * ### Resolved
 
-    * During HTML validation on gallery.html one bug became known, a brief description is below:
-    ![W3C Validator test result](assets/docs/testing/gallery-bug.png)
-    This was an oversight from the development on semantics when the \<article> attribute was used without a heading. It was easily fixed by deleting the tag, and leaving it as a paragraph \<p> only.
+    * While validating index.html for HTML compliance, a bug was discovered. During development stage i overlooked the presence of the "/" symbol at the end of some links, which triggered some warnings. Fortunately, removing the symbols resolved the issue.
 
-    * At the end of testing a bug appeared to cause a gap between the footer and the border of the page at the bottom 
-    ![Footer Gap Bug](assets/docs/testing/gap-bug.png)
-    This was an oversight from the development phase when the footer disclaimer was being updated with links. It was easily fixed by closing the a href attribute with \</a>. The link was showing as having another link because it was not properly closed as it also has an \<i> attribute for icon.
+    * Another bug was identified, this time involving \<div> elements missing closing tags. The problem was quickly resolved by locating the missing tags and closing them.
 
+    * During deployment to GitHub pages, an issue emerged with the loading of assets. Investigation revealed that asset URL links cannot begin with a "/". Fortunately, the fix was simple: removing the "/" from the links.
+    
 * ### Unresolved
 
-    * During the testing of responsiveness in different browsers a bug was found that did not display "Font Awesome" icons on Ipads on the nav bar. 
-    ![Safari Ipad Icons](assets/docs/testing/safari-ipad.png)
-    
-    
+    * When testing the "printBtn" feature, it was discovered that the button was causing 2 pages display, the first one being a Blank Page.
 
 ## Additional Testing
 ### Lighthouse
@@ -65,12 +60,15 @@ The site was also tested using [Page Speed Insights](https://pagespeed.web.dev) 
 * Best Practices - Site conforms to industry best practices.
 * SEO - Search engine optimisation. Is the site optimised for search engine result rankings.
 
-    As an example the results for home page are below:
-    ![Lighthouse test results](assets/docs/testing/sitespeed.png)
+  ### Mobile
 
-    This part of the testing process showed up that the site was slow to load due to the javascript of youtube trailer. 
+    As an example the results for home page for mobile are below:
+    ![Lighthouse test results mobile](assets/images/testing/lhouse-mobile.png)
 
-### Peer review
-In addition to the above testing the beta version of the site was put through its paces by peers, both in the software development field and outside. The results highlighted responsive design weakness for a type of mobile device that was rectified with minor CSS amendments. There were also minor spelling and grammar errors that have since been fixed.
+  ### Desktop
+    As an example the results for home page for desktop are below:
+    ![Lighthouse test results mobile](assets/images/testing/lhouse-desktop.png)
+
+    
 
 Back to [README.md](./README.md#testing).
