@@ -1,4 +1,4 @@
-# Backpack Buddy
+# Backpack Buddy - Ready for Anything
 
 ## Porfolio 2
 

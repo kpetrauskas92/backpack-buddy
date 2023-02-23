@@ -1,12 +1,16 @@
 
-// accordion
+/** ACCORDION SECTION Functionality
+ * This code defines an accordion behavior. It selects all elements with the class "accordion-button" and adds a click event listener to each one. 
+ * When the button is clicked, it toggles an "active" class on the button and expands/collapses the content below it. 
+ * If there is an active button already, it collapses it before expanding the clicked button's content. 
+ * The code also updates the currently active button.
+ */
 
 let accordionButtons = document.querySelectorAll('.accordion-button');
 let activeButton = null;
 
 accordionButtons.forEach(button => {
   button.addEventListener('click', () => {
-    // Collapses the currently active button (if there is one)
     if (activeButton && activeButton !== button) {
       activeButton.classList.remove('active');
       activeButton.nextElementSibling.style.maxHeight = 0;
@@ -20,13 +24,17 @@ accordionButtons.forEach(button => {
       content.style.maxHeight = 0;
     }
 
-    // Updates the currently active button
     activeButton = (button.classList.contains('active')) ? button : null;
 
   });
 });
 
-// email sign up
+/** SIGN-UP FORM Funtionality
+ * This code handles form submission and displays a message to the user using an alert modal. 
+ * It defines several functions and event listeners to achieve this functionality. 
+ * When the form is submitted, it prevents the default form submission behavior, 
+ * retrieves the name input value from the form, and displays a message thanking the user for subscribing to "Backpack Buddy". 
+ */
 
 let form = document.getElementById('sign-up__form');
 let alertModal = document.getElementById('alert-modal');
@@ -60,7 +68,13 @@ function handleFormSubmit(event) {
 
 form.addEventListener('submit', handleFormSubmit);
 
-// back pack modal functions 
+/**BACKPACK MODAL Functionality
+ * This code handles a modal that displays a list of items in a backpack. 
+ * It defines event listeners for the backpack image, modal button, close button, and window. 
+ * When the user clicks on the backpack image or modal button, the modal is displayed.
+ * When the user clicks on the close button or outside the modal, the modal is hidden. 
+ * The code also defines a function to clear the backpack list, which is triggered when the clear button is clicked. 
+ */
 
 let modal = document.getElementById("backpack-modal");
 let modalBtn = document.getElementById("backpack-button");
@@ -107,7 +121,14 @@ let clearBackpack = function() {
 
 clearBtn.onclick = clearBackpack;
 
-// list updates in backpack when checked
+/** BACKPACK MODAL List Functionality
+ * This code sets up a function that creates event listeners for checkboxes. 
+ * When a checkbox is checked, the function adds an item to a backpack list and updates a count of items in the backpack. 
+ * When a checkbox is unchecked, the function removes the corresponding item from the backpack list and updates the count. 
+ * The function also creates a new header for the backpack list if the checked item belongs to a new category. 
+ * The code uses a JavaScript object to keep track of which categories have been added to the backpack list. 
+ * The function is applied to all checkboxes on the page.
+ */
 
 let categoriesAdded = {};
 
@@ -127,8 +148,6 @@ function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIco
       }
       
       li.innerText = " " + this.value;
-      
-      // add a Font Awesome checkmark icon to the li element
       
       let icon = document.createElement('i');
       icon.classList.add('fas', 'fa-check');
@@ -163,7 +182,33 @@ for (let i = 0; i < checkboxes.length; i++) {
   checkboxes[i].addEventListener('change', createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount));
 }
 
-// print button element
+/** ADD EXTRA BUTTON Functionality
+ * This code adds an event listener to a button with an id of "add-extra-item-button". 
+ * When the button is clicked, the code creates a new list item element with text content from an input field with an id of "extra-item-input". 
+ * If the input field is not empty, the new list item is added to a list with an id of "backpackList", the input field is cleared, 
+ * and two other elements with ids of "backpackIcon" and "itemCount" are updated with new values.
+ */
+
+let addExtraItemButton = document.getElementById("add-extra-item-button");
+let extraItemInput = document.getElementById("extra-item-input");
+
+addExtraItemButton.addEventListener("click", function() {
+  let extraItem = extraItemInput.value;
+  if (extraItem.trim() !== "") {
+    let li = document.createElement("li");
+    li.innerText = "Extra: " + extraItem;
+    backpackList.appendChild(li);
+    extraItemInput.value = "";
+    backpackIcon.innerText = parseInt(backpackIcon.innerText) + 1;
+    itemCount.innerText = parseInt(itemCount.innerText) + 1;
+  }
+});
+
+/**PRINT BUTTON Functionality
+ * This code sets an event listener on a print button, so that when clicked, it opens a new window, creates a new document in it, 
+ * writes the HTML contents of an element with the ID "backpack-modal" into it, and prints the document. 
+ * Finally, it waits for one second before closing the window. Essentially, it allows the user to print a list of items in their backpack.
+ */
 
 let printBtn = document.getElementById("print-button");
 
@@ -183,26 +228,7 @@ printBtn.addEventListener("click", function() {
 
   printWindow.print();
 
-  // Add a delay before closing the print window, to work with smartphones.
-
   setTimeout(function() {
     printWindow.close();
   }, 1000);
-});
-
-// add extra button function 
-
-let addExtraItemButton = document.getElementById("add-extra-item-button");
-let extraItemInput = document.getElementById("extra-item-input");
-
-addExtraItemButton.addEventListener("click", function() {
-  let extraItem = extraItemInput.value;
-  if (extraItem.trim() !== "") {
-    let li = document.createElement("li");
-    li.innerText = "Extra: " + extraItem;
-    backpackList.appendChild(li);
-    extraItemInput.value = "";
-    backpackIcon.innerText = parseInt(backpackIcon.innerText) + 1;
-    itemCount.innerText = parseInt(itemCount.innerText) + 1;
-  }
 });

@@ -49,7 +49,9 @@ Google Chrome, Microsoft Edge, Safari and Mozilla Firefox. Appearance, functiona
     
 * ### Unresolved
 
-    * When testing the "printBtn" feature, it was discovered that the button was causing 2 pages display, the first one being a Blank Page.
+    * The "printBtn" function is causing two pages to appear, with the first page being blank. This issue may stem from problems related to print settings, code, or the content being printed. To address the problem, it may be necessary to review and update print settings, adjust the code to properly prompt the print dialog box, and identify and resolve any content-related issues. However, the specific cause of the issue is unclear, making it difficult to determine the best course of action.
+
+      *The decision was made not to prioritize fixing this bug as it did not significantly impact the project or user experience. Moreover, with the planned implementation of print to PDF, this issue is expected to be resolved automatically, and therefore, not a top priority.
 
 ## Additional Testing
 ### Lighthouse
