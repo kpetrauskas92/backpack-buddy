@@ -6,6 +6,8 @@ Backpack Buddy is a website designed for hikers to help them prepare for their a
 
 ![Responsice Mockup](assets/images/readme/responsive-mockup.png)
 
+Deployed Live link: [Backpack Buddy](https://kpetrauskas92.github.io/backpack-buddy/) 
+
 # Contents
 
 * [**User Experience UX**](<#user-experience-ux>)
