@@ -87,23 +87,32 @@ let itemCount = document.getElementById("item-count");
 let backpackImg = document.getElementById("backpack-image");
 
 backpackImg.addEventListener('click', function() {
-  
   modal.style.display = "block";
+  setTimeout(() => {
+    modal.classList.add("visible");
+  }, 10);
 });
 
 modalBtn.onclick = function() {
-  
   modal.style.display = "block";
-  
+  setTimeout(() => {
+    modal.classList.add("visible");
+  }, 10);
 };
 
 closeBtn.onclick = function() {
-  modal.style.display = "none";
+  modal.classList.remove("visible");
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 300);
 };
 
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.classList.remove("visible");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
   }
 };
 
@@ -131,6 +140,10 @@ clearBtn.onclick = clearBackpack;
  */
 
 let categoriesAdded = {};
+
+for (let i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener('change', createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount));
+}
 
 function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount) {
   return function() {
@@ -161,14 +174,17 @@ function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIco
     else {
       let items = backpackList.getElementsByTagName("li");
       for (let j = 0; j < items.length; j++) {
-        if (items[j].innerText === this.value) {
-          backpackList.removeChild(items[j].previousSibling);
+        let listItemText = items[j].innerText.substring(items[j].innerText.indexOf(" "));
+        if (listItemText.trim() === this.value.trim()) {
+          let header = items[j].previousSibling;
           backpackList.removeChild(items[j]);
           backpackIcon.innerText = parseInt(backpackIcon.innerText) - 1;
           itemCount.innerText = parseInt(itemCount.innerText) - 1;
           
-          if (items.length === 1 && items[0].previousSibling.innerText === accordionButton) {
-            backpackList.removeChild(items[0].previousSibling);
+          // Check if there are no more items in the category, and remove the header
+          let categoryItems = Array.from(backpackList.getElementsByTagName("li")).filter(li => li.previousSibling === header);
+          if (categoryItems.length === 0) {
+            backpackList.removeChild(header);
             delete categoriesAdded[accordionButton];
           }
           break;
@@ -176,10 +192,6 @@ function createCheckboxChangeListener(categoriesAdded, backpackList, backpackIco
       }
     }
   };
-}
-
-for (let i = 0; i < checkboxes.length; i++) {
-  checkboxes[i].addEventListener('change', createCheckboxChangeListener(categoriesAdded, backpackList, backpackIcon, itemCount));
 }
 
 /** ADD EXTRA BUTTON Functionality
