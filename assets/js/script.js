@@ -317,22 +317,14 @@ async function initWeatherWidget() {
 }
 
 async function fetchLatLngFromLocation(location) {
-  console.log("Latitude:", latitude);
-  console.log("Longitude:", longitude);
+  const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(location)}&key=${openCageApiKey}`);
+  console.log("OpenCage API response:", response);
 
-const response = await fetch("/api/fetchWeatherData", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ latitude, longitude }),
-});
-  console.log('Weather data response:', response);
   if (!response.ok) {
-    throw new Error("Error fetching weather data.");
+    throw new Error("Error fetching location data.");
   }
-
   const data = await response.json();
+  console.log("OpenCage API data:", data);
 
   if (data.results && data.results.length > 0) {
     const latitude = data.results[0].geometry.lat;
