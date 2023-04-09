@@ -277,13 +277,9 @@ linksButton.addEventListener("click", function () {
 let weatherApiKey;
 let openCageApiKey;
 
-fetch("assets/creds/config.json")
-  .then(response => response.json())
-  .then(data => {
-    weatherApiKey = data.weather_api_key;
-    openCageApiKey = data.open_cage_api_key;
-    initWeatherWidget();
-  });
+weatherApiKey = process.env.WEATHER_API_KEY;
+openCageApiKey = process.env.OPEN_CAGE_API_KEY;
+initWeatherWidget();
 
 async function initWeatherWidget() {
   const locationInput = document.getElementById("location-input");
@@ -334,7 +330,13 @@ async function fetchLatLngFromLocation(location) {
 
 async function fetchWeatherData(latitude, longitude) {
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}`);
+    const response = await fetch("/api/fetchWeatherData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ latitude, longitude }),
+    });
     if (!response.ok) {
       throw new Error("Error fetching weather data.");
     }
