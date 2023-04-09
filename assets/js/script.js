@@ -245,6 +245,7 @@ printBtn.addEventListener("click", function() {
   }, 1000);
 });
 
+
 let linksButton = document.getElementById("useful-links-button");
 let linksDiv = document.getElementById("useful-links");
 
@@ -272,3 +273,140 @@ linksButton.addEventListener("click", function () {
     });
   }
 });
+
+let weatherApiKey;
+let openCageApiKey;
+
+fetch("assets/creds/config.json")
+  .then(response => response.json())
+  .then(data => {
+    weatherApiKey = data.weather_api_key;
+    openCageApiKey = data.open_cage_api_key;
+    initWeatherWidget();
+  });
+
+async function initWeatherWidget() {
+  const locationInput = document.getElementById("location-input");
+  const searchLocationButton = document.getElementById("search-location");
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    updateWeatherData("Geolocation is not supported by your browser.");
+  }
+
+  searchLocationButton.addEventListener("click", async function () {
+    const location = locationInput.value;
+    try {
+      const { lat, lng } = await fetchLatLngFromLocation(location);
+      await fetchWeatherData(lat, lng);
+    } catch (err) {
+      alert("No results found for the entered location.");
+    }
+  });
+
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    fetchWeatherData(latitude, longitude);
+  }
+
+  function error() {
+    updateWeatherData("Unable to retrieve your location. Please enter your location manually.");
+  }
+}
+
+async function fetchLatLngFromLocation(location) {
+  const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(location)}&key=${openCageApiKey}`);
+  if (!response.ok) {
+    throw new Error("Error fetching location data.");
+  }
+  const data = await response.json();
+
+  if (data.results && data.results.length > 0) {
+    const latitude = data.results[0].geometry.lat;
+    const longitude = data.results[0].geometry.lng;
+    return { lat: latitude, lng: longitude };
+  } else {
+    throw new Error("No results found for the entered location.");
+  }
+}
+
+async function fetchWeatherData(latitude, longitude) {
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${weatherApiKey}`);
+    if (!response.ok) {
+      throw new Error("Error fetching weather data.");
+    }
+    const data = await response.json();
+    displayWeather(data);
+  } catch (err) {
+    updateWeatherData("Error fetching weather data. Please try again later.");
+  }
+}
+
+function displayWeather(data) {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const forecast = data.list.find(item => {
+    const itemDate = new Date(item.dt_txt);
+    return itemDate.getDate() === tomorrow.getDate();
+  });
+
+  if (forecast) {
+    const temperatureElement = document.querySelector('.temperature');
+    const descriptionElement = document.querySelector('.description');
+    const windSpeedElement = document.querySelector('.wind-speed');
+    const cityElement = document.querySelector('.city');
+    const weatherIconElements = document.querySelectorAll('.weather-icon');
+
+    const temperature = forecast.main.temp.toFixed(1);
+    const description = forecast.weather[0].description;
+    const windSpeed = forecast.wind.speed.toFixed(1);
+    const city = data.city.name;
+    const country = data.city.country;
+    const weatherIcon = getWeatherIcon(forecast.weather[0].main);
+
+    temperatureElement.innerHTML = `Temperature: <span style="font-weight: bold;">${temperature}°C</span>`;
+    descriptionElement.innerHTML = `Weather: <span style="font-weight: bold;">${description}</span>`;
+    windSpeedElement.innerHTML = `Wind Speed: <span style="font-weight: bold;">${windSpeed} m/s</span>`;
+    cityElement.innerHTML = `<span class="loaction-text">Tomorrow's weather in</span> <span class="city-name">${city},${country}</span>`;
+    weatherIconElements.forEach(element => {
+      element.style.display = 'none';
+      if (element.classList.contains(weatherIcon)) {
+        element.style.display = 'block';
+      }
+    });
+  } else {
+    updateWeatherData("Weather data not available for tomorrow.");
+  }
+}
+
+function getWeatherIcon(weather) {
+  switch (weather) {
+    case 'Clouds':
+      return 'cloudy';
+    case 'Rain':
+    case 'Drizzle':
+    case 'Mist':
+      return 'rain';
+    case 'Snow':
+      return 'snow';
+    case 'Clear':
+      return 'sunny';
+    case 'Thunderstorm':
+      return 'thunderstorms';
+    default:
+      return '';
+  }
+}
+
+function updateWeatherData(content) {
+  const temperatureElement = document.querySelector('.temperature');
+  const descriptionElement = document.querySelector('.description');
+  const windSpeedElement = document.querySelector('.wind-speed');
+
+  temperatureElement.innerHTML = '';
+  descriptionElement.innerHTML = content;
+  windSpeedElement.innerHTML = '';
+}
