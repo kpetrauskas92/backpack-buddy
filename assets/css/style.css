@@ -197,6 +197,22 @@
   background-size: contain;
 }
 
+/* For tablet devices */
+@media screen and (max-width: 768px) {
+  .weather-icon {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* For mobile devices */
+@media screen and (max-width: 480px) {
+  .weather-icon {
+    width: 75px;
+    height: 75px;
+  }
+}
+
 
 .cloudy {
   background-image: url('../images/weather-widget/cloudy.svg');
