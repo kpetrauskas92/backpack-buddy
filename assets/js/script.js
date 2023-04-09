@@ -277,9 +277,13 @@ linksButton.addEventListener("click", function () {
 let weatherApiKey;
 let openCageApiKey;
 
-weatherApiKey = process.env.WEATHER_API_KEY;
-openCageApiKey = process.env.OPEN_CAGE_API_KEY;
-initWeatherWidget();
+fetch("/.netlify/functions/apiKeys")
+  .then((response) => response.json())
+  .then((data) => {
+    weatherApiKey = data.weatherApiKey;
+    openCageApiKey = data.openCageApiKey;
+    initWeatherWidget();
+  });
 
 async function initWeatherWidget() {
   const locationInput = document.getElementById("location-input");
