@@ -333,14 +333,16 @@ async function fetchLatLngFromLocation(location) {
 }
 
 async function fetchWeatherData(latitude, longitude) {
+  console.log('fetching weather data for lat:', latitude, 'lng:', longitude);
   try {
-    const response = await fetch("/.netlify/functions/fetchWeatherData", {
+    const response = await fetch("/api/fetchWeatherData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ latitude, longitude }),
     });
+    console.log('weather data response:', response);
     if (!response.ok) {
       throw new Error("Error fetching weather data.");
     }
@@ -350,6 +352,7 @@ async function fetchWeatherData(latitude, longitude) {
     updateWeatherData("Error fetching weather data. Please try again later.");
   }
 }
+
 
 function displayWeather(data) {
   const tomorrow = new Date();
