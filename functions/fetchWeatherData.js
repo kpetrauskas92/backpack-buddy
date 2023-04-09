@@ -1,9 +1,25 @@
-const fetch = require("node-fetch");
+let fetch;
+
+const initFetch = (async () => {
+  const nodeFetch = await import('node-fetch');
+  fetch = nodeFetch.default;
+})();
 
 const weatherApiKey = process.env.WEATHER_API_KEY;
 const openCageApiKey = process.env.OPEN_CAGE_API_KEY;
 
 exports.handler = async function (event, context) {
+  await initFetch;
+
+  if (!event.body) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: "Invalid request: Missing body." }),
+    };
+  }
+
+  console.log("Event body:", event.body);
+
   const { latitude, longitude } = JSON.parse(event.body);
 
   try {
