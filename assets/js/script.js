@@ -244,3 +244,31 @@ printBtn.addEventListener("click", function() {
     printWindow.close();
   }, 1000);
 });
+
+let linksButton = document.getElementById("useful-links-button");
+let linksDiv = document.getElementById("useful-links");
+
+linksButton.addEventListener("click", function () {
+  const listItems = linksDiv.querySelectorAll("li");
+  listItems.forEach((item, index) => {
+    item.style.setProperty("--order", index);
+  });
+
+  if (linksDiv.classList.contains("visible")) {
+    linksDiv.classList.remove("visible");
+    listItems.forEach((item, index) => {
+      item.style.animation = `slideOut 0.5s forwards calc(0.1s * var(--order))`;
+      if (index === listItems.length - 1) {
+        item.addEventListener("animationend", function () {
+          linksDiv.classList.add("hidden");
+        }, { once: true });
+      }
+    });
+  } else {
+    linksDiv.classList.remove("hidden");
+    linksDiv.classList.add("visible");
+    listItems.forEach((item) => {
+      item.style.animation = `slideIn 0.5s forwards calc(0.1s * var(--order))`;
+    });
+  }
+});

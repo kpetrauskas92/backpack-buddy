@@ -263,20 +263,71 @@
     background-color: #f44336;
   }
 
+  #useful-links-button {
+    width: 250px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #664646;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  #useful-links-button:hover {
+    background-color: #94c566;
+  }
+
   .useful-links {
     padding: 1.5rem;
     max-width: 80%;
     margin: 0 auto;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
   }
-
-  .useful-links li{
+  
+  .useful-links.visible {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  
+  .useful-links li {
     list-style: none;
     padding-bottom: 0.3rem;
+    opacity: 0;
   }
-
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+  }
+  
   .useful-links li a {
     font-weight: bold;
-  }
+  }  
+  
 
   /* signup-form styling */
 
