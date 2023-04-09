@@ -334,7 +334,7 @@ async function fetchLatLngFromLocation(location) {
 
 async function fetchWeatherData(latitude, longitude) {
   try {
-    const response = await fetch("/api/fetchWeatherData", {
+    const response = await fetch("/.netlify/functions/fetchWeatherData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
